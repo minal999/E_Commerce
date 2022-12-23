@@ -1,0 +1,53 @@
+﻿@model IEnumerable<E_Commerce.Models.Product>
+@{
+    ViewData["List"] = "List";
+}
+
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Product_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product_Desc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+               @Html.DisplayNameFor(model=>model.Product_Img)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product_Name)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product_Desc)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                    <img src="~/img/@item.Product_Img" alt="" height=200 width=200 />
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {id=@item.Product_Id }) |
+                    @Html.ActionLink("Details", "Details", new {id=@item.Product_Id }) |
+                    @Html.ActionLink("Delete", "Delete", new {id=@item.Product_Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@*<script src="~/ckeditor/ckeditor.js"></script>
+<script src="~/ckeditor/adapters/jquery.js"></script> *@ 

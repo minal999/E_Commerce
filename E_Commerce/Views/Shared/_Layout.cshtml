@@ -1,0 +1,135 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - E_Commerce</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/E_Commerce.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <nav class="navbar navbar-expand-lg bg-light">
+                        <div class="container-fluid">
+                            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="index"><img src="~/img/main.png" height="70" /></a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                    @{
+                                        if (User.Identity.IsAuthenticated)
+                                        {
+                                            if (HttpContextAccessor.HttpContext.Session.GetInt32("role_id") == 1)
+                                            {
+                                                    <li class="nav-item">
+                                                        <a class="nav-link text-dark" asp-area="" asp-controller="Category" asp-action="List">Categories</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="List">Products</a>
+                                                    </li>
+                                            }
+                                            if (HttpContextAccessor.HttpContext.Session.GetInt32("role_id") == 2)
+                                            {
+                                                    <li class="nav-item">
+                                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AllProducts">Home</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ProductsByCategory">Category</a>
+                                                    </li>
+
+                                                    <li class="nav-item">
+                                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AboutUs">About Us</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="ContactUs">Contact Us</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="CheckOut">Cart</a>
+                                                    </li>
+                                            }
+                                               
+                                        }
+                                        }
+                                </ul>
+                                        <form class="d-flex">
+                                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                        @{
+                                            if(User.Identity.IsAuthenticated)
+                                        {
+                                                    <li class="nav-item">
+                                                        <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Logout"> Welcome @User.Identity.Name <b>Logout</b></a>
+                                                    </li>
+                                        }
+                                        else{
+                                                    <li class="nav-item">
+                                                        <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Login">Login</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Register">Register</a>
+                                                    </li>
+                                        }
+                                  }
+                                    </ul>
+                                </form>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer-distributed">
+
+        <div class="footer-left">
+            <h3>Fashion<span>Club</span></h3>
+            <p class="footer-links">
+                <a href="Home.html" class="link-1">Home</a>
+                <a href="About.html">About</a>
+                <a href="Contact.html">Contact</a>
+            </p>
+            <p class="footer-company-name">Fashion Club © 2015</p>
+        </div>
+
+        <div class="footer-center">
+            <div>
+                <i class="fa fa-map-marker"></i>
+                <p>
+                    <span>
+                        Heera Buiding,
+                        Outer Ring Road
+                    </span>
+                    <span>Bengaluru – 560103, India</span>
+                </p>
+            </div>
+            <div>
+                <i class="fa fa-phone"></i>
+                <p>+91 7826314829</p>
+            </div>
+        </div>
+
+        <div class="footer-right">
+            <p class="footer-company-about">
+                <span>About the company</span>
+                Prominent brands include Adidas, Nike, Puma, Catwalk, Inc 5, United Colors of Benetton, FabIndia and Biba to name a few. You can also shop from some recently introduced labels such as - Roadster , Kook N Keech and ETC.
+            </p>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

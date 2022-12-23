@@ -1,0 +1,44 @@
+﻿@model E_Commerce.Models.ProductCategory
+
+@{
+    ViewData["Title"] = "ProductsByCategory";
+}
+
+<table>
+    <tr>
+    @foreach (var c in Model.Categories)
+    {
+    <td>
+    <div class="container">
+        <br>
+        <a href="@Url.Action("ProductsByCategory","Home",new {id=c.Category_Id})" class="btn btn-dark">@c.Category_Name</a><br />
+    </div>
+    </td>
+    }
+    </tr>
+</table>
+<br />
+<table>
+    <tr>
+        <td>
+            <div class="container-fluid">
+                <div class="row">
+                    @foreach (var item in Model.Products)
+                    {
+                        <div class="col">
+                            <div class="card" style="width: 15rem;">
+                                <img class="card-img-top" src="~/img/@item.Product_Img" alt="" height=100 width=200 />
+                                <h6>@item.Product_Name</h6>
+                                <h6>Rs. @item.Price</h6>
+                                <div class="card-body">
+                                    <a href="@Url.Action("CheckOut","Home",new{id=@item.Product_Id})" class="btn btn-primary">Add To cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+

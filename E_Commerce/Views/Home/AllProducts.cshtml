@@ -1,0 +1,44 @@
+﻿@model IEnumerable<E_Commerce.Models.Product>
+
+@{
+    ViewData["Title"] = "AllProducts";
+}
+
+<style>
+    table {
+        text-align: center;
+    }
+    #col{
+        height:200px;
+        width:200px;
+    }
+</style>
+
+
+    <table class="table">
+    <tr>
+        <td> 
+            <div class="container-fluid">
+                <div class="row">
+                    @foreach (Product item in Model)
+                    {
+                    <div class="col">
+                        <div class="card" style="width: 15rem;">
+                            <a href="@Url.Action("AddToCart","Home",new{id=@item.Product_Id})">
+                                    <img class="card-img-top" src="~/img/@item.Product_Img" alt="" height=100 width=200 />
+                                    <div class="overlay"></div>
+                            </a>
+                            <h6>@item.Product_Name</h6>
+                            <h6>Rs. @item.Price</h6>
+                            @*<div class="card-body">
+                                <a href="#" class="btn btn-primary">Add To cart</a>
+                            </div>*@
+                        </div>
+                    </div>
+                    }
+                </div>
+
+            </div>
+        </td>
+    </tr>
+    </table>

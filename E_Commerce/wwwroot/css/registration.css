@@ -1,0 +1,32 @@
+.container {
+    padding: 20px;
+    margin: 50px 400px 50px 400px;
+    background-color: #ce9964;
+    color: #1a1a1a;
+    border-radius: 20px;
+}
+
+table {
+    border-spacing: 20px;
+}
+
+#submit1 {
+    width: 100px;
+    height: 30px;
+    border: hidden;
+    color: whitesmoke;
+    background-color: #1a1a1a;
+    border-radius: 5px;
+}
+
+form {
+    height: 450px;
+    width: 400px;
+}
+
+input.form-control {
+    border: hidden;
+    height: 30px;
+    width: 220px;
+    border-radius: 5px;
+}

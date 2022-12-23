@@ -1,0 +1,48 @@
+﻿@model E_Commerce.Models.User
+
+@{
+    ViewData["Title"] = "Login";
+}
+<head>
+    <meta charset="utf-8" />
+    <title>Login</title>
+    <link rel="stylesheet" href="~/css/Register.css" />
+</head>
+</style>
+<h4>Login</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Login">
+              <table>
+            <tr>
+              <td><label asp-for="Email" class="control-label"></label></td>
+              <td><input asp-for="Email" class="form-control" /></td>
+            </tr>
+            <tr>
+              <td><label asp-for="Password" class="control-label"></label></td>
+              <td><input asp-for="Password" class="form-control" /></td>
+               </tr>
+            </table>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<br />
+<div>
+    <a asp-action="Register">If New User Register First</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+                  
+                          
+                         
+                        

@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewData["Title"] = "ContactUs";
+}
+
+
+<style>
+    .container {
+        padding: 10px;
+        margin: 5px 200px 5px 200px;
+    }
+</style>
+@using (Html.BeginForm())
+{
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-xm-12">
+                        <br />
+                        <div class="mb-3">
+                            <h4>Please Ask Your Queries Here</h4>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">User Name</label>
+                    @Html.TextBox("name","",new{@class="form-control",placeholder="Full Name"})
+                        </div>
+                         <div class="mb-3">
+                             <label for="exampleFormControlInput3" class="form-label">Email address</label>
+                    @Html.TextBox("email","",new{@class="form-control",placeholder="abc@gmail.com"})
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput2" class="form-label">Contact</label>
+                    @Html.TextBox("contact_no","",new{@class="form-control",placeholder="Contact"})
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">Write Message</label>
+                    @Html.TextArea("message","",new{@class="form-control",placeholder="Message Optional..."})
+                        </div>
+                        <div class="mb-3">
+                            <input type="submit" class="btn btn-outline-primary" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+}
+

@@ -1,0 +1,56 @@
+﻿
+@using Newtonsoft.Json;
+
+@{
+    ViewData["Title"] = "CheckOut";
+}
+
+@if(TempData["cart"]!=null)
+{
+
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Product Image</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in JsonConvert.DeserializeObject<List<E_Commerce.Models.Cart>>((string)TempData["cart"]))
+                {
+                    <tr>
+                        <td>@item.Product_Name</td>
+                    <td> <img src="~/img/@item.Product_Img" style="height:100px;width:100px" /></td>
+                    <td>@item.Price</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Total</td>
+                    <td>
+                        <a href="@Url.Action("DeleteFromCart","Home",new {id=item.Product_Id})">
+                            <input type="submit" value="Delete" class="btn btn-warning" />
+                    </a>
+                    </td>
+                    </tr>
+                }
+                
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4"><b>Total Amount:</b></td>
+                <td>@TempData["total"]</td>
+            </tr>
+        </tfoot>
+    </table>
+    <input type="submit" value="Order" class="btn btn-primary" />
+@*    <div>
+        <a href="#" class="btn btn-primary">Order</a>
+    </div>*@
+}
+else
+{
+    <h4>Cart is empty</h4>
+    @Html.ActionLink("Go Back","AllProducts","Home")
+}
